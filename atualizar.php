@@ -1,3 +1,24 @@
+<?php
+require_once "src/funcoes-alunos.php";
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$dadosAluno = lerUmAluno($conexao, $id);
+if (isset($_POST['atualizar-dados'])) {
+    require_once "src/funcoes-alunos.php";
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+    $primeira = filter_input(INPUT_POST, 'primeira', FILTER_SANITIZE_SPECIAL_CHARS); 
+    $segunda = filter_input(INPUT_POST, 'segunda', FILTER_SANITIZE_SPECIAL_CHARS); 
+    $media = filter_input(INPUT_POST, 'media', FILTER_SANITIZE_SPECIAL_CHARS); 
+    $situacao = filter_input(INPUT_POST, 'situacao', FILTER_SANITIZE_SPECIAL_CHARS);
+    $media = ($primeira + $segunda) / 2 ;
+	if($media >= 7){
+		$situacao = "aprovado";
+	} else {
+		$situacao = "reprovado";
+	}
+    atualizarAluno($conexao, $id, $nome, $primeira, $segunda, $media, $situacao);
+    header("location:visualizar.php"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,16 +34,16 @@
     		
     <p>Utilize o formulário abaixo para atualizar os dados do aluno.</p>
 
-    <form action="#" method="post">
+    <form action="" method="post">
         
 	    <p><label for="nome">Nome:</label>
-	    <input type="text" name="nome" id="nome" required></p>
+	    <input type="text" name="nome" id="nome" value="<?=$dadosAluno['nome']?>" ></p>
         
         <p><label for="primeira">Primeira nota:</label>
-	    <input name="primeira" type="number" id="primeira" step="0.1" min="0.0" max="10" required></p>
+	    <input name="primeira" type="number" id="primeira" value="<?=$dadosAluno['primeira']?>" step="0.1" min="0.0" max="10"></p>
 	    
 	    <p><label for="segunda">Segunda nota:</label>
-	    <input name="segunda" type="number" id="segunda" step="0.1" min="0.0" max="10" required></p>
+	    <input name="segunda" type="number" id="segunda" value="<?=$dadosAluno['segunda']?>" step="0.1" min="0.0" max="10"></p>
 
         <p>
         <!-- Campo somente leitura e desabilitado para edição.
