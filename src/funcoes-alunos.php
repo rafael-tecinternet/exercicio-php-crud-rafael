@@ -64,7 +64,4 @@ function excluirAluno(PDO $conexao, int $id):void{
     }
 
 }
-function verificaMedia($media){
-    return $media >= 7 ? "aprovado" : "reprovado";
-}
 ?>
