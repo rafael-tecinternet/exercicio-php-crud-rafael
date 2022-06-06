@@ -66,5 +66,6 @@ if (isset($_POST['atualizar-dados'])) {
 </div>
 
 <script src="BootStrap/js/bootstrap.js"></script>
+<script src="js/atualiza-campos.js"></script>
 </body>
 </html>
