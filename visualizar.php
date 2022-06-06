@@ -49,5 +49,6 @@ $listaAlunos = lerAlunos($conexao);
 </div>
 <script src="BootStrap/js/bootstrap.js"></script>
 <script src="js/excluir.js"></script>
+<script src="js/atualiza-campos.js"></script>
 </body>
 </html>
