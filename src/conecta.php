@@ -1,8 +1,8 @@
 <?php
 $servidor = "localhost";
-$usuario = "webmaio1_rafael";
-$senha = "naolembro";
-$banco = "webmaio1_crudrafa";
+$usuario = "root";
+$senha = "";
+$banco = "crud_escola_rafael";
 try {
     $conexao = new PDO("mysql:host=$servidor; dbname=$banco; charset=utf8", $usuario, $senha);
     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
